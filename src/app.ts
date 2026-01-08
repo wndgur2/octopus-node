@@ -7,6 +7,10 @@ const app = express()
 const server = http.createServer(app)
 const wss = new WebSocketServer({ server })
 
+app.get('/', (req, res) => {
+  res.send('WebSocket server is running.')
+})
+
 wss.on('connection', (socket) => {
   socket.on('message', (rawMessage) => {
     let payload
